@@ -6,10 +6,10 @@ import LoginPage from './pages/auth/LoginPage';
 import NotFound from './pages/auth/NotFound';
 import Unauthorized from './pages/auth/Unauthorized';
 import ProtectedRoutes from './components/ProtectedRoute';
-import DashBoardHome from './pages/customer/DashBoardHome';
-import AdminHome from './pages/admin/AdminHome';
+import DashBoardHome from './pages/customer/DashBoardHome'
 import AdminLayout from './layouts/AdminLayout';
 import CustomerLayout from './layouts/CustomerLayout';
+import AdminHome from './pages/admin/AdminHome';
 
 const App = () => {
   return (

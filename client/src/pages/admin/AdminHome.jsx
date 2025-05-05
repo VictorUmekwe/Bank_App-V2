@@ -1,7 +1,9 @@
 import React from 'react'
 
 const AdminHome = () => {
-    return <div>Admin Dashboard - Manage Users</div>;
+  return (
+    <div>AdminHome</div>
+  )
 }
 
 export default AdminHome
