@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../features/auth/authApi";
 import { logout } from "../features/auth/authSlice";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const AdminLayout = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,12 @@ const AdminLayout = () => {
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-900 text-white p-6 flex flex-col justify-between">
+      <motion.aside
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-64 bg-gray-900 text-white p-6 flex flex-col justify-between"
+      >
         <div>
           <h2 className="text-2xl font-bold mb-6 text-center">Admin Panel</h2>
           <div className="mb-6 text-sm text-gray-300 text-center">
@@ -35,7 +41,9 @@ const AdminLayout = () => {
             <NavLink
               to="users"
               className={({ isActive }) =>
-                `flex items-center gap-2 hover:text-blue-400 transition ${isActive ? "text-blue-400" : "text-white"}`
+                `flex items-center gap-2 hover:text-blue-400 transition ${
+                  isActive ? "text-blue-400" : "text-white"
+                }`
               }
             >
               <Users size={18} /> Manage Users
@@ -43,7 +51,9 @@ const AdminLayout = () => {
             <NavLink
               to="chat"
               className={({ isActive }) =>
-                `flex items-center gap-2 hover:text-blue-400 transition ${isActive ? "text-blue-400" : "text-white"}`
+                `flex items-center gap-2 hover:text-blue-400 transition ${
+                  isActive ? "text-blue-400" : "text-white"
+                }`
               }
             >
               <MessageCircle size={18} /> Chat Support
@@ -58,12 +68,17 @@ const AdminLayout = () => {
         >
           <LogOut size={16} /> Logout
         </button>
-      </aside>
+      </motion.aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 bg-gray-100">
+      <motion.main
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="flex-1 p-8 bg-gray-100"
+      >
         <Outlet />
-      </main>
+      </motion.main>
     </div>
   );
 };

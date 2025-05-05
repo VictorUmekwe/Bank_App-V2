@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     currency: { type: String, default: 'EUR' },
     balance: { type: Number, default: 0 },
     isSuspended: { type: Boolean, default: false },
-    role: { type: String, enum: ['customer', 'admin'], default: 'admin' },
+    role: { type: String, enum: ['customer', 'admin'], default: 'customer' },
 }, { timestamps: true });
 
 // Hash password before save

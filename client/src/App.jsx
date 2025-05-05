@@ -1,15 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/landing-page/HomePage';
-import RegisterPage from './pages/auth/RegisterPage';
-import LoginPage from './pages/auth/LoginPage';
-import NotFound from './pages/auth/NotFound';
-import Unauthorized from './pages/auth/Unauthorized';
-import ProtectedRoutes from './components/ProtectedRoute';
-import DashBoardHome from './pages/customer/DashBoardHome'
-import AdminLayout from './layouts/AdminLayout';
-import CustomerLayout from './layouts/CustomerLayout';
-import AdminHome from './pages/admin/AdminHome';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/landing-page/HomePage";
+import RegisterPage from "./pages/auth/RegisterPage";
+import LoginPage from "./pages/auth/LoginPage";
+import NotFound from "./pages/auth/NotFound";
+import Unauthorized from "./pages/auth/Unauthorized";
+import ProtectedRoutes from "./components/ProtectedRoute";
+import DashBoardHome from "./pages/customer/DashBoardHome";
+import AdminLayout from "./layouts/AdminLayout";
+import CustomerLayout from "./layouts/CustomerLayout";
+import AdminHome from "./pages/admin/AdminHome";
+import Users from "./pages/admin/Users";
+import Chat from "./pages/admin/Chat";
 
 const App = () => {
   return (
@@ -22,14 +24,16 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
 
         {/* Admin Protected Routes */}
-        <Route element={<ProtectedRoutes allowedRoles={['admin']} />}>
+        <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminHome />} />
+            <Route path="users" element={<Users />} />
+            <Route path="chat" element={<Chat />} />
           </Route>
         </Route>
 
         {/* Customer Protected Routes */}
-        <Route element={<ProtectedRoutes allowedRoles={['customer']} />}>
+        <Route element={<ProtectedRoutes allowedRoles={["customer"]} />}>
           <Route path="/dashboard" element={<CustomerLayout />}>
             <Route index element={<DashBoardHome />} />
           </Route>
