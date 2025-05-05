@@ -39,9 +39,9 @@ const RegisterPage = () => {
     }
   };
   return (
-    <section className="flex items-center justify-center min-h-screen bg-gray-900">
+    <section className="flex items-center justify-center min-h-screen bg-black">
       <motion.div
-        className="max-w-md  p-6 bg-white shadow-lg rounded-xl mx-auto  "
+        className="max-w-md  p-6 bg-slate-900 text-white shadow-lg rounded-xl mx-auto  "
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

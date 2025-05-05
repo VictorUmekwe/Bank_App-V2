@@ -15,14 +15,20 @@ export const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({ name, email, password });
   generateToken(res, user._id);
 
-  res.status(201).json(user);
+  res.status(201).json({
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    accountNumber: user.accountNumber,
+  });
 });
 
-// Login (UPDATED)
+// Login 
 export const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  if (!username || !password) {
+  if (!email || !password) {
     res.status(400);
     throw new Error("Please provide email and password");
   }
@@ -42,7 +48,13 @@ export const authUser = asyncHandler(async (req, res) => {
   // Match password
   if (await user.matchPassword(password)) {
     generateToken(res, user._id);
-    res.json(user);
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      accountNumber: user.accountNumber,
+    });
   } else {
     res.status(401);
     throw new Error("Invalid credentials");
